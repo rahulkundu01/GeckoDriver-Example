@@ -1,0 +1,33 @@
+package TestScript;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+public class LoadPage {
+	String driverPath = "F:\\Work Environment\\MyProject\\GoogleTestCases\\geckodriver.exe";
+    public WebDriver driver;
+
+    @Before
+    public void startBrowser() {
+        System.setProperty("webdriver.gecko.driver",driverPath );
+        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+        capabilities.setCapability("marionette", true);
+        driver = new FirefoxDriver(capabilities);
+
+    }
+
+    @Test
+    public void navigateToUrl() {
+        driver.get("http://demo.guru99.com/selenium/guru99home/");
+    }
+
+    @After
+    public void endTest() {
+        driver.quit();
+    }
+
+}
